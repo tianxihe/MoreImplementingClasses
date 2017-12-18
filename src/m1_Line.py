@@ -3,11 +3,12 @@ A simple   Line   class.
 NOTE: This is NOT rosegraphics -- it is your OWN Line class.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Tianxi He.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import math
 import m1t_test_Line as m1t
+
 
 ########################################################################
 # IMPORTANT:
@@ -178,6 +179,7 @@ class Line(object):
     """ Represents a line segment in 2-dimensional space. """
 
     def __init__(self, start, end):
+
         """
         What comes in:
           -- self
@@ -216,8 +218,10 @@ class Line(object):
           :type start: Point
           :type end:   Point
         """
+        self.start=start.clone()
+        self.end=end.clone()
         # --------------------------------------------------------------
-        # TODO: 3.
+        # DONE: 3.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -325,8 +329,11 @@ class Line(object):
         Type hints:
           :rtype: Line
         """
+        return Line(self.start,self.end)
+
+
         # --------------------------------------------------------------
-        # TODO: 4.
+        # DONE: 4.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -359,7 +366,7 @@ class Line(object):
             print(line1 == line2)    # Should now print: True
         """
         # --------------------------------------------------------------
-        # TODO: 5.
+        # DONE: 5.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -367,6 +374,9 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
+        newstart=self.start
+        self.start=self.end
+        self.end=newstart
 
     def slope(self):
         """
@@ -394,6 +404,11 @@ class Line(object):
         Type hints:
           :rtype: float
         """
+
+        slope = (self.end.y - self.start.y) / (self.end.x - self.start.x)
+        return slope
+
+
         # --------------------------------------------------------------
         # TODO: 6.
         #   a. READ the above specification, including the Example.
@@ -427,6 +442,9 @@ class Line(object):
         Type hints:
           :rtype: float
         """
+        length = ((self.end.x - self.start.x) ^ 2 + (
+            self.end.y - self.start.y) ^ 2) ** 0.5
+        return length
         # --------------------------------------------------------------
         # TODO: 7.
         #   a. READ the above specification, including the Example.
