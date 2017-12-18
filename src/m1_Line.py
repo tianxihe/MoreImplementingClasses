@@ -404,8 +404,10 @@ class Line(object):
         Type hints:
           :rtype: float
         """
-
-        slope = (self.end.y - self.start.y) / (self.end.x - self.start.x)
+        if self.end.x-self.start.x==0:
+            slope=0
+        else:
+            slope = (self.end.y - self.start.y) / (self.end.x - self.start.x)
         return slope
 
 
