@@ -14,9 +14,9 @@ def main():
     #   Uncomment only 1 test at a time as you develop your code.
     # --------------------------------------------------------------
 
-    #run_test_simple_t()
-    #run_test_set_colors()
-    #run_test_move_by()
+    run_test_simple_t()
+    run_test_set_colors()
+    run_test_move_by()
     run_test_clone()
 
 
@@ -276,9 +276,19 @@ class CapitalT(object):
         Type hints:
           :rtype: CapitalT
         """
-        return rg.Rectangle.clone()
+        point=rg.Point((self.h_rect.corner_2.x+self.h_rect.corner_1.x)/2,
+                       (self.h_rect.corner_1.y+self.h_rect.corner_2.y)/2)
+        W=abs(self.h_rect.corner_2.x-self.h_rect.corner_1.x)
+        H=abs(self.v_rect.corner_1.y-self.v_rect.corner_2.y)
+        T=abs(self.h_rect.corner_2.y-self.h_rect.corner_1.y)
+        new_T=CapitalT(point,W,H,T)
+        new_T.v_rect.fill_color=self.v_rect.fill_color
+        new_T.v_rect.outline_color=self.v_rect.outline_color
+        new_T.h_rect.fill_color = self.h_rect.fill_color
+        new_T.h_rect.outline_color = self.h_rect.outline_color
+        return new_T
         # --------------------------------------------------------------
-        # TODO: 7.
+        # DONE: 7.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
